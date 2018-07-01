@@ -31,7 +31,15 @@ router.post('/',  (req,res) => {
 
 router.delete('/:id', (req,res) => {
     console.log('DELETE /feedback', req.body);
-    
+    const queryText = `DELETE FROM feedback WHERE id=$1;`;
+    pool.query(queryText, [req.params.id])
+    .then((result) => {
+        console.log('successfully deleted', result.data);
+        res.sendStatus(201);
+    }).catch((error) => {
+        console.log('error deleting', error);
+        res.sendStatus(500);   
+    })
 })
 
 

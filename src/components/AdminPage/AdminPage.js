@@ -15,7 +15,7 @@ class Admin extends Component {
       }
 
     getFeedback(){
-        axios.get('/feedback').then((response)=> {
+        axios.get('/feedback').then((response) => {
             console.log(response.data);
             this.setState({feedback: response.data});
             console.log('in getFeedback', this.state);
@@ -23,6 +23,16 @@ class Admin extends Component {
             console.log(error);
             alert('something went wrong');   
         })     
+    }
+
+    deleteFeedback(id){
+        axios.delete(`/feedback/${id}`).then((response) => {
+            console.log(response.data);
+            this.getFeedback();
+        }).catch((error) => {
+            console.log(error);
+            alert('something went wrong')
+        })
     }
 
     render() {
@@ -45,7 +55,7 @@ class Admin extends Component {
                     <td>{item.understanding}</td>
                     <td>{item.support}</td>
                     <td>{item.comments}</td>
-                    <td><button>Delete</button></td>
+                    <td><button onClick={() => this.deleteFeedback(item.id)}>Delete</button></td>
                 </tr>)}
             </tbody>
         </table>

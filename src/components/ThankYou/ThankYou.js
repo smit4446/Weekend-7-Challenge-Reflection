@@ -9,6 +9,10 @@ const mapReduxStateToProps = (reduxStore) => ({
 
 class ThankYou extends Component {
 
+  componentDidMount(){
+    this.sendFeedbackToServer(this.props.reduxStore.feedbackReducer);
+}
+
   sendFeedbackToServer = () => {
     const feedback = this.props.reduxStore.feedbackReducer;
     console.log(this.props);
@@ -24,7 +28,6 @@ class ThankYou extends Component {
 
   handleClick = (event) => {
     console.log('in handleClick');
-    this.sendFeedbackToServer()
   }
   
 

@@ -8,6 +8,7 @@ import Comments from '../Comments/Comments';
 import HomePage from '../HomePage/HomePage';
 import ThankYou from '../ThankYou/ThankYou';
 import Admin from '../AdminPage/AdminPage';
+import 'typeface-roboto';
 
 class App extends Component {
 
